@@ -1,0 +1,9 @@
+.producing images for menu
+.producing 3d models from fchk
+.producing mo diagrams
+.producing uv-vis and ir diagrams
+.editing mol_data.js to change number of MOs and molecule info
+.how to use calculations folder
+.where to put assets in the web_molecules folder
+.editing materials and lighting etc
+.

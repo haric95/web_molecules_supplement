@@ -1,0 +1,12 @@
+.The code to generate the IR and UV-Vis spectra is in two separate Jupyter Notebook (.ipynb) files.
+
+.To be able to use these notebooks you will need to have Jupyter Notebook installed on you machine.
+	.Firstly you will need to make sure you have Python installed on your machine and install pip package manager.
+		.Can download python here: https://www.python.org/downloads/
+		.And install pip here: https://pip.pypa.io/en/stable/installing/
+		.Alternatively, if you are using Anaconda, then you can install Jupyter Notebook via that: https://anaconda.org/anaconda/jupyter
+	.Once it is installed, you can run the command >> jupyter notebook from a terminal in this folder to load it. This will open up a tab in your web browser.
+
+.Locate the .ipynb file you want to load, which will be in the "calculations" folder.
+.Follow the instructions in the notebook to generate the diagrams.
+.Transfer them to the appropriate folder in the web_molecules/public directory.

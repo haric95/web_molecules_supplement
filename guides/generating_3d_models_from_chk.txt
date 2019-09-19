@@ -1,0 +1,54 @@
+Guide
+___________
+
+
+1. Generate a .fchk file of the molecule you would like to model.
+	.To do this, a .chk file for your optimized molecule is required.
+	.Use the gaussian formchk tool to generate a .fchk file
+		.If performing optimizations and using formchk on unix machines, there shouldn't be any issues.
+		.If optimization is on Windows machine, you will first need to use the Windows version of Gaussian
+		and it's formchk tool. This will create a .fch file. You will then need to unformat this file on
+		a unix machine using the unfchk tool and reformat it using formchk again, this time on unix machine.
+		This should give you the .fchk file (not the .fch like Windows version of formchk).
+
+2. Generate a .cube file containing all of the MOs you wish to model.
+	.You can now pass the .fchk file to the Gaussian cubegen tool to create a .cube file containing the desired
+	MO surfaces
+	.for example: cubegen 1 MO="1-12" ch4.fchk ch4.cube
+		."1-12" specifies the range of MOs to include in the .cube file. This argument can take a few different values
+		such as "Valence". Check cubegen documentation for these.
+		**.If the cube file extension is .cube you will need to change it to .cub
+
+3. Load .cub files into VMD and generate .obj models of the molecule and MOs
+	.Create a folder in this directory called the name of your molecule.
+	.Put the .cub file in that folder, making sure it has the same name as the folder.
+	.Open VMD in the calculations folder and in the vmd tkconsole (under utilities tab) type: source objrender.tcl
+	.then to load the molecule: load ch4 {0 1 2 3 4 5 6}
+		.Here, ch4 is the name of the folder and .cub file and the list of numbers are the MOs to render.
+		.The list starts from 0, so this is the lowest energy MO.
+		.If you don't know how many MO surfaces are included in the .cub file, then type a list up to a high number
+		as it does not matter if you type the number of an MO that is not included.
+	.you then need to rotate the molecule using the rotate commands in the console so that the starting orientation of the
+	molecule is as desired. Most likely with the principal rotation axis pointing up.
+		.eg >> rotate x by 90
+	.then to render out the ball and stick model to an obj file type: mol_render ch4
+	.then to render out the the MOs type: to_mos 0
+		.Here, the 0 tells VMD to load the first MO in your list
+	.then type: mos_render ch4 {1 2 3 4 5 6 7}
+		.at this point, start indexing mos from 1. not sure why need to do this, but if you index from 0
+		then first mo gets rendered twice. Tcl script could be fixed to avoid this.
+		.where the list is the number of the MOs you want to render out
+	^This only works when rendering out all MOs, starting with the lowest energy. Haven't tried ignorning lower energy MOs.
+	^Probably best to render out all MOs from the lowest energy and delete as desired.
+	^indexing is from 0 when in VMD, but when rendered out, the MOs are indexed from 1.
+	^This makes it clearer when adding to the website.
+
+4. This will put all the models in the folder in which the .cub is.
+	To include in the website, put the molecule .obj and .mtl into the public/assets/molecules folder and 
+	only the molecule_mo_no.obj files into the public/assets/molecules folder.
+		.the .mtl files for the MOs can be discarded, they are redundant as all of the MOs only have the same two materials.
+		.To edit the MO materials, you can edit the mo.mtl file in public/assets/mos folder.
+	
+
+When you want to render out a new molecule, you will have to restart VMD. 
+This is because VMD doesn't reindex when you delete and add a new molecule and I have't figured out how to work around this in Tcl.

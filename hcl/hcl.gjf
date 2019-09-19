@@ -1,0 +1,13 @@
+%chk=\\icnas1.cc.ic.ac.uk\hc2616\WORK\Student Shapers\calculations\hcl\hcl.chk
+# opt freq b3lyp/6-31g(d,p) geom=connectivity integral=grid=ultrafine
+pop=(full,nbo)
+
+Title Card Required
+
+0 1
+ Cl                -0.86687306    0.04643963    0.00000000
+ H                 -2.15687306    0.04643963    0.00000000
+
+ 1 2 1.0
+ 2
+

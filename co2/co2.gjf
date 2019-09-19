@@ -1,0 +1,15 @@
+%chk=\\icnas1.cc.ic.ac.uk\hc2616\WORK\Student Shapers\calculations\co2\co2.chk
+# opt freq b3lyp/6-31g(d,p) geom=connectivity integral=grid=ultrafine
+pop=(full,nbo)
+
+Title Card Required
+
+0 1
+ C                 -0.05191760   -0.21148716    0.11076956
+ O                  1.20648240   -0.21148716    0.11076956
+ O                 -1.31031760   -0.21148716    0.11076956
+
+ 1 2 2.0 3 2.0
+ 2
+ 3
+
